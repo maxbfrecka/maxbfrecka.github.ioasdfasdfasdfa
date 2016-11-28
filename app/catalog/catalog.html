@@ -1,0 +1,23 @@
+<div class="catalogContainer">
+
+	<div class="headColumns">
+		<div class="headContainer" ng-show="!newPostClick">
+				<div ng-click="newPostClick=!newPostClick"  class="makeNewPost">
+					Make New Thread
+				</div>
+		</div>
+		<div ng-show="newPostClick" class="newPostContainer">
+			<mx-new-post></mx-new-post>
+		</div>
+	</div>
+
+
+	<div class="centerCatalog">
+			<ul class="catalogThreads">
+				<div ng-repeat="thread in threads">
+					<mx-thread-preview></mx-thread-preview>
+				</div>
+			</ul>
+	</div>
+
+</div>	

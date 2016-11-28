@@ -1,0 +1,85 @@
+-click thread preview - > links to #/{{thread.ID}}
+-goes to that view... the :ID
+-and it SHOULD get the ID
+
+
+
+
+->randomized tags
+->live updates inside of threads
+->login page
+->click other post to reply to it
+->
+
+
+
+
+->SETTINGS PAGE
+-turn off randomizations
+-let users set their own schemes and settings
+-turn off live-page-updates
+
+
+
+
+-music player in top
+
+
+
+
+major features:
+-login/account/profile
+-image creator
+-music player
+-reviews page
+-page for social
+
+
+
+
+
+->database structure for threads and posts?
+-> new thread: type it in, post it...
+-> sends it to database, opens "thread" page with your post
+-> how do replies get added? where are they stored?
+-> 
+
+
+
+
+threadNumber
+
+
+
+
+
+->randomize ID tags
+
+
+
+
+
+database structure for message board
+
+
+
+WHY IS THE ROUTE MESSING UP IN THE REPLY AREA
+
+
+
+
+
+
+
+
+->when press reply, it loads in all the replies...
+
+
+
+
+
+
+
+
+
+
