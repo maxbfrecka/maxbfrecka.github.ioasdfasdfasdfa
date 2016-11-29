@@ -14,9 +14,20 @@
 
 	<div class="centerCatalog">
 			<ul class="catalogThreads">
-				<div ng-repeat="thread in threads">
+				<div ng-repeat="thread in threads" ng-init="image=thread.OPID">
 					<mx-thread-preview></mx-thread-preview>
 				</div>
+
+
+				<!-- <div ng-repeat="thread in threads" ng-init="image=thread.OPID">
+					
+					ATTRIBUTE USE - > put thread ID into that ID
+					GET IN SCOPE...
+					<mx-thread-preview id=""></mx-thread-preview>
+				
+				</div> -->
+
+
 			</ul>
 	</div>
 

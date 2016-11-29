@@ -1,6 +1,6 @@
 angular.module('catalog',[])
 
-.directive('mxCatalog', ['testData', 'newPostClick', 'threadData', function(testData, newPostClick, threadData){
+.directive('mxCatalog', ['testData', 'newPostClick', 'threadData', 'imageBotData', function(testData, newPostClick, threadData, imageBotData){
 	return {
 		restrict: 'E',
 	  templateUrl: 'catalog/catalog.html',
@@ -11,6 +11,9 @@ angular.module('catalog',[])
 	  	scope.newPostClick = newPostClick.if
 
 	  	scope.postTime = post_time()
+
+	  	
+
 
 	  }
   }

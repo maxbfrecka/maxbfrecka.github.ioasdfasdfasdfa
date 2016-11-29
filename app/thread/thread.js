@@ -38,6 +38,13 @@ angular.module('thread',[])
 			tc.currentReplies = search(tc.currentID, tc.replies);
 			console.log(tc.currentReplies)
 
+			tc.threads.$loaded(function(){
+				threadData.currentThread = tc.threads.filter(function(obj) {
+	    		return obj.OPID === tc.currentID;
+					})[0];
+				tc.thread = threadData.currentThread;
+			})
+
 			tc.replies.$loaded(function(){
 				tc.currentReplies = search(tc.currentID, tc.replies);
 			})
