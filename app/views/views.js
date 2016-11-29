@@ -7,6 +7,10 @@ angular.module('views', ['ngRoute'])
 	  	templateUrl: 'views/thread.html',
 	  	controller: 'threadController'
 	  })
+	  .when('/:ID/canvastest', {
+	  	templateUrl: 'views/canvastest.html',
+	  	controller: 'canvasController'
+	  })
 	  .when('/error', {
 	    template : '<p>Error - Page Not Found</p>'
 	  })
@@ -18,7 +22,11 @@ angular.module('views', ['ngRoute'])
 	  });
 }])
 
-  .controller('threadController', ['$scope', '$routeParams', 'testData', function($scope, $routeParams, testData){
-  	$scope.threads = testData.threads;
-  	console.log("route is" + $scope.threads[$routeParams.ID])
-  }])
+.controller('threadController', ['$scope', '$routeParams', 'testData', function($scope, $routeParams, testData){
+	$scope.threads = testData.threads;
+	console.log("route is" + $scope.threads[$routeParams.ID])
+}])
+
+.controller('canvasController', ['$scope', 'testData', function($scope, testData){
+	$scope.threads = testData.threads;
+}])

@@ -16,6 +16,10 @@ angular.module('threadPreview',[])
 	  	console.log("scope.image is " + scope.image)
 	  	console.log("imagebotdata.image is " + imageBotData.imageID)
 
+	  	function imgError(image){
+  			image.parentNode.parentNode.style.display = 'none';
+			}
+
 
 
 

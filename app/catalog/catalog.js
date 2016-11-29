@@ -9,6 +9,7 @@ angular.module('catalog',[])
 	  link: function(scope, element, attrs){
 	  	scope.threads = threadData.threads;
 	  	scope.newPostClick = newPostClick.if
+	  	scope.newPostClickImage = newPostClick.ifImage
 
 	  	scope.postTime = post_time()
 
@@ -23,6 +24,8 @@ angular.module('catalog',[])
 	var newPostClick = {}
 
 	newPostClick.if = false
+
+	newPostClick.ifImage = false
 
 	return newPostClick
 })
@@ -52,6 +55,7 @@ angular.module('catalog',[])
 		{
 			number: 1,
 			title: 'cool thread',
+			move_1: 10,
 			OP: 'anonymous',
 			summary: 'this is something I did today I am happy!',
 			ID: 'XADRPOA',
@@ -71,6 +75,8 @@ angular.module('catalog',[])
 		{
 			number: 2,
 			title: 'nice times',
+			move_1: 10,
+			move_2:20,
 			OP: 'anonymous',
 			summary: 'asf is asdf I did asdfsadfa I am happy!',
 			ID: 'ARAOPSO',
@@ -81,6 +87,8 @@ angular.module('catalog',[])
 		{
 			number: 3,
 			title: 'blah blah blah',
+			move_1: 20,
+			move_2:34,
 			OP: 'John John',
 			summary: 'OK YALL I AM SO HAPY ABOUT THESE THREADS!!!!',
 			ID: 'FAREAREAFE',
@@ -91,6 +99,8 @@ angular.module('catalog',[])
 		{
 			number: 4,
 			title: 'okkkkkkkkkk',
+			move_1: 30,
+			move_2: 16,
 			OP: 'Sally Henry',
 			summary: 'hello I am a girl and we love your site!',
 			ID: 'DADADADADA',
@@ -101,6 +111,8 @@ angular.module('catalog',[])
 		{
 			number: 5,
 			title: 'cool thread',
+			move_1: 40,
+			move_2: 55,
 			OP: 'anonymous',
 			summary: 'this is something I did today I am happy!',
 			ID: 'XADRPOA',
@@ -181,6 +193,8 @@ angular.module('catalog',[])
 		{
 			number: 5,
 			title: 'cool thread',
+			move_1: 30,
+			move_2: 5,
 			OP: 'anonymous',
 			summary: 'this is something I did today I am happy!',
 			ID: 'XADRPOA',

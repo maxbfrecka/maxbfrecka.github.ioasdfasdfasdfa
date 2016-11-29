@@ -1,10 +1,9 @@
-<a href="#/{{thread.OPID}}">
-<div class="threadPreview" id="thread.OPID">
+<a id="previewLink" href="#/{{thread.OPID}}">
+<div class="threadPreview" id="thread.OPID" ng-style="{'border-color': thread.posts[0].rID1bg}">
 
 	<div class="threadPreviewContent">
 
-		<!-- images? -->
-		<!-- <img src="{{thread.img}}" alt="gone" width="100" height="100"> -->
+		<img src="{{thread.posts[0].image}}" onerror="imgError(this);" alt="the image has failed miserably to load" width="120" height="120">
 		<!-- thread title  -->
 		<!-- <h3 class="previewTitle">{{thread.title}}</h3> -->		
 		
@@ -14,19 +13,19 @@
 
 <!-- 
 		<mx-image-bot></mx-image-bot>	 -->	
-		
-
-
+	
 
 		<span class="previewPostTime">{{thread.posts[0].datetime}}</span>
 		<span class="previewAuthor">{{thread.posts[0].userName}}<span>
-
-		<span id="rID1" ng-style="{'background-color': thread.posts[0].rID1bg}">{{thread.posts[0].ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': thread.posts[0].rID2bg}">{{thread.posts[0].ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': thread.posts[0].rID3bg}">{{thread.posts[0].ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': thread.posts[0].rID4bg}">{{thread.posts[0].ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': thread.posts[0].rID5bg}">{{thread.posts[0].ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': thread.posts[0].rID6bg}">{{thread.posts[0].ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': thread.posts[0].rID7bg}">{{thread.posts[0].ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': thread.posts[0].rID8bg}">{{thread.posts[0].ID.charAt(7)}}</span>
+		<!-- randomized color ID tag -->
+		<span ng-style="{'background-color': thread.posts[0].rID1bg, 'color' : thread.posts[0].rID1t}">{{thread.posts[0].ID.charAt(0)}}</span><span ng-style="{'background-color': thread.posts[0].rID2bg, 'color' : thread.posts[0].rID2t}">{{thread.posts[0].ID.charAt(1)}}</span><span ng-style="{'background-color': thread.posts[0].rID3bg, 'color' : thread.posts[0].rID3t}">{{thread.posts[0].ID.charAt(2)}}</span><span ng-style="{'background-color': thread.posts[0].rID4bg, 'color' : thread.posts[0].rID4t}">{{thread.posts[0].ID.charAt(3)}}</span><span ng-style="{'background-color': thread.posts[0].rID5bg, 'color' : thread.posts[0].rID5t}">{{thread.posts[0].ID.charAt(4)}}</span><span ng-style="{'background-color': thread.posts[0].rID6bg, 'color' : thread.posts[0].rID6t}">{{thread.posts[0].ID.charAt(5)}}</span><span ng-style="{'background-color': thread.posts[0].rID7bg, 'color' : thread.posts[0].rID7t}">{{thread.posts[0].ID.charAt(6)}}</span><span ng-style="{'background-color': thread.posts[0].rID8bg, 'color' : thread.posts[0].rID8t}">{{thread.posts[0].ID.charAt(7)}}</span>
 
 		<div class="summaryContainer">
 				<p class="previewSummary">{{thread.posts[0].content}}</p>
 		</div>
 	</div>
+
+
 
 </div>
 </a>

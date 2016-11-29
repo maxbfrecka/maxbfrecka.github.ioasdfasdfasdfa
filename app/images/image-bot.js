@@ -33,8 +33,8 @@ angular.module('imageBot',[])
 	imageBotData.imageID = null;
 
 	imageBotData.generateImage = function(){
-  	var c = document.getElementById("canvas");
-		var ctx = c.getContext("2d");
+  	var canvas = document.getElementById("canvas");
+		var context = c.getContext("2d");
 		ctx.beginPath(); 
 		ctx.lineWidth="1";
 		ctx.strokeStyle="green";
@@ -47,3 +47,14 @@ angular.module('imageBot',[])
 	return imageBotData
 
 })
+
+.directive('fallbackSrc', function () {
+  var fallbackSrc = {
+    link: function postLink(scope, iElement, iAttrs) {
+      iElement.bind('error', function() {
+        angular.element(this).attr("src", iAttrs.fallbackSrc);
+      });
+    }
+   }
+   return fallbackSrc;
+});

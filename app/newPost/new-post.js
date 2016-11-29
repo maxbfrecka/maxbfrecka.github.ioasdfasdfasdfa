@@ -31,6 +31,16 @@ angular.module('newPost', ['firebase'])
           // threads[0].posts[0] is the OP and also URL
           //array of posts inside of each thread
 
+
+          if (vm.sendImage==null){
+              _sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
+            } else if (vm.sendImage==undefined){
+              _sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
+            } else {
+              _sendImage=vm.sendImage
+            }
+
+
           vm.threads.$add({
             OPID: _OPID,
             posts: [{
@@ -45,8 +55,18 @@ angular.module('newPost', ['firebase'])
               rID5bg: randomRGBcolor(),
               rID6bg: randomRGBcolor(),
               rID7bg: randomRGBcolor(),
-              rID8bg: randomRGBcolor()
+              rID8bg: randomRGBcolor(),
+              rID1t: randomRGBcolor(),
+              rID2t: randomRGBcolor(),
+              rID3t: randomRGBcolor(),
+              rID4t: randomRGBcolor(),
+              rID5t: randomRGBcolor(),
+              rID6t: randomRGBcolor(),
+              rID7t: randomRGBcolor(),
+              rID8t: randomRGBcolor(),
+              image: _sendImage
           }]});
+          console.log(_sendImage)
           send.thread = '';
           $location.path('/' + _OPID);
         }

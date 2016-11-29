@@ -49,6 +49,9 @@ angular.module('thread',[])
 				tc.currentReplies = search(tc.currentID, tc.replies);
 			})
 			
+			function imgError(image){
+  			image.parentNode.parentNode.style.display = 'none';
+			}
 
 
       tc.newReply = function(send){
@@ -68,6 +71,15 @@ angular.module('thread',[])
             // threads[0].posts[0] is the OP and also URL
             //array of posts inside of each thread
 
+
+            if (tc.sendImage==null){
+            	_sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
+            } else if (tc.sendImage==undefined){
+            	_sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
+            } else {
+            	_sendImage=tc.sendImage
+            }
+
             tc.replies.$add({OPID: tc.currentID, reply: {
                 ID: make_randID(),
                 userName: 'anonymous',
@@ -80,7 +92,16 @@ angular.module('thread',[])
                 rID5bg: randomRGBcolor(),
                 rID6bg: randomRGBcolor(),
                 rID7bg: randomRGBcolor(),
-                rID8bg: randomRGBcolor()
+                rID8bg: randomRGBcolor(),
+                rID1t: randomRGBcolor(),
+                rID2t: randomRGBcolor(),
+                rID3t: randomRGBcolor(),
+                rID4t: randomRGBcolor(),
+                rID5t: randomRGBcolor(),
+                rID6t: randomRGBcolor(),
+                rID7t: randomRGBcolor(),
+                rID8t: randomRGBcolor(),
+                image: _sendImage
            	}});
             send.reply = '';
             console.log(tc.currentReplies)
@@ -101,6 +122,7 @@ angular.module('thread',[])
 
 			//for show and hide post
 			tc.newReplyClick = newReplyClick.if
+			tc.newReplyClickImage = newReplyClick.ifImage
 	  }
   }
 }])
@@ -117,6 +139,8 @@ angular.module('thread',[])
 	var newReplyClick = {}
 
 	newReplyClick.if = false
+	newReplyClick.ifImage = false
+
 
 	return newReplyClick
 })

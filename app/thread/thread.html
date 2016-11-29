@@ -17,7 +17,8 @@
 	<div ng-show="tc.newReplyClick" ng-submit="tc.newReply(send)">
 		<form>
 			<textarea id="replyThread" name="post" ng-model="send.reply" required></textarea>
-			<input type="file" id="imageupload" class="filestyle" accept="image/gif, image/jpeg, image/png" data-classButton="btn btn-primary" data-input="false" data-buttonText="Upload Image" data-buttonBefore="false">
+			<button id="imageupload" type="button" ng-click="tc.newReplyClickImage=!tc.newReplyClickImage" ng-show="!tc.newReplyClickImage">Add Image</button>
+			<input type="text" id="imageupload" class="filestyle" ng-show="tc.newReplyClickImage" placeholder="Paste image URL" ng-model="tc.sendImage">
 			<button id="submitpost" type="submit">Add reply</button>
 		</form>
 	</div>
@@ -28,11 +29,11 @@
 		<div ng-repeat="post in tc.thread.posts">
 			<div class="post">
 					<div id="rID">
-						<span id="time">{{post.datetime}}</span><span id="rID1" ng-style="{'background-color': post.rID1bg}">{{post.ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': post.rID2bg}">{{post.ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': post.rID3bg}">{{post.ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': post.rID4bg}">{{post.ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': post.rID5bg}">{{post.ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': post.rID6bg}">{{post.ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': post.rID7bg}">{{post.ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': post.rID8bg}">{{post.ID.charAt(7)}}</span>
+						<span id="time">{{post.datetime}}</span><span id="rID1" ng-style="{'background-color': post.rID1bg, 'color': post.rID1t}">{{post.ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': post.rID2bg, 'color': post.rID2t}">{{post.ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': post.rID3bg, 'color': post.rID3t}">{{post.ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': post.rID4bg, 'color': post.rID4t}">{{post.ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': post.rID5bg, 'color': post.rID5t}">{{post.ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': post.rID6bg, 'color': post.rID6t}">{{post.ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': post.rID7bg, 'color': post.rID7t}">{{post.ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': post.rID8bg, 'color': post.rID8t}">{{post.ID.charAt(7)}}</span> <span id="replyUsername">{{post.userName}}</span>
 					</div>
 
 					<div id="postBody">
-					<!-- <img class="postImage" src="{{thread.img}}" alt="gone" width="190" height="190"> -->
+					<img onerror="imgError(this);" class="postImage" src="{{post.image}}" alt="gone" width="190" height="190">
 					<blockquote class="postMessage">{{post.content}}</blockquote>
 				</div>
 		</div>
@@ -40,11 +41,11 @@
 		<div ng-repeat="reply in tc.currentReplies">
 			<div class="post">
 					<div id="rID">
-						<span id="time">{{reply.reply.datetime}}</span><span id="rID-thread"><span id="rID1" ng-style="{'background-color': reply.reply.rID1bg}">{{reply.reply.ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': reply.reply.rID2bg}">{{reply.reply.ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': reply.reply.rID3bg}">{{reply.reply.ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': reply.reply.rID4bg}">{{reply.reply.ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': reply.reply.rID5bg}">{{reply.reply.ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': reply.reply.rID6bg}">{{reply.reply.ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': reply.reply.rID7bg}">{{reply.reply.ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': reply.reply.rID8bg}">{{reply.reply.ID.charAt(7)}}</span></span>
+						<span id="time">{{reply.reply.datetime}}</span><span id="rID-thread"><span id="rID1" ng-style="{'background-color': reply.reply.rID1bg, 'color': reply.reply.rID1t}">{{reply.reply.ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': reply.reply.rID2bg, 'color': reply.reply.rID2t}">{{reply.reply.ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': reply.reply.rID3bg, 'color': reply.reply.rID3t}"	>{{reply.reply.ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': reply.reply.rID4bg, 'color': reply.reply.rID4t}">{{reply.reply.ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': reply.reply.rID5bg, 'color': reply.reply.rID5t}">{{reply.reply.ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': reply.reply.rID6bg, 'color': reply.reply.rID6t}">{{reply.reply.ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': reply.reply.rID7bg, 'color': reply.reply.rID7t}">{{reply.reply.ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': reply.reply.rID8bg, 'color': reply.reply.rID8t}">{{reply.reply.ID.charAt(7)}}</span></span> <span id="replyUsername">{{reply.reply.userName}}</span>
 					</div>
 
 					<div id="postBody">
-					<!-- <img class="postImage" src="{{thread.img}}" alt="gone" width="190" height="190"> -->
+					<img onerror="imgError(this);" class="postImage" src="{{reply.reply.image}}" alt="gone" width="190" height="190">
 					<blockquote class="postMessage">{{reply.reply.content}}</blockquote>
 				</div>
 		</div>

@@ -45,15 +45,13 @@ li#navbar_links {
 }
 
 .headColumns {
-	margin-top:20px;
+	margin-top:10px;
 	text-align:center;
-	margin:0 auto;
 }
 
 .headContainer{
 	margin-top:30px;
 	padding:5px;
-	background-color:black;
 	margin-bottom:5px;
 	display:inline-flex;
 	border-radius:10px;
@@ -62,20 +60,24 @@ li#navbar_links {
 }
 
 .makeNewPost {
-	color:yellow;
-	background-color:pink;
-	padding:20px;
-	font-size: 30px;
-	height:70px;
-	width:300px;
+    background-color:#fbfad0;
+    color:grey;
+	padding-top:10px;
+    padding-bottom:40px;
+	font-size: 19px;
+	height:59px;
+	width:260px;
+    border-color:white;
+    border-width:2px;
+    border-style:solid;
 	margin-bottom:5px;
 	border-radius:10px;
 }
 
 .makeNewPost:hover{
-	background-color:yellow;
-	color:grey;
 	cursor: pointer;
+    color:grey;
+    background-color:#ffff99;
 }
 
 .newPostContainer{
@@ -90,12 +92,13 @@ li#navbar_links {
 	text-align:center;
 	width:97%;
 	min-width:1200px;
+    max-width:1250px;
 	position:relative;
 	padding:10px;
 	box-sizing: border-box;
 	margin: auto 0;
 	background: #090d13;
-	border-radius:10px;
+	border-radius:20px;
 }
 
 ul.catalogThreads {
@@ -110,6 +113,13 @@ ul.catalogThreads {
 	column-rule: 1px dotted black;
 }
 
+/*#previewLink {
+    color:black;
+}
+#previewLink:hover {
+    color:grey;
+}*/
+
 
 .threadPreview {
 	background-color: white;
@@ -120,11 +130,33 @@ ul.catalogThreads {
 	margin-top:30px;
 	border-style:solid;
 	border-width:2px;
-	border-color:grey;
-	display:inline-block;
+/*	border-color:grey;
+*/	display:inline-block;
 	outline:0px;
 	border-radius: 18px;
+    position: relative;
 }
+
+.threadPreview:hover{
+    background-color: #fff94d;
+}
+
+
+.threadPreview .threadPreviewTooltip {
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%; 
+}
+
 
 .threadPreviewContent {
 	padding:15px;
@@ -152,6 +184,7 @@ ul.catalogThreads {
 	width:200px;
 	padding:3px;
 	background-color:lightgrey;
+    font-color:black;
 /*    white-space:nowrap;
     word-wrap: break-word;
     overflow: hidden;
@@ -166,7 +199,7 @@ ul.catalogThreads {
 }
 
 .previewAuthor {
-	font-size:13px;
+	font-size:11px;
 }
 
 .textEntry {
@@ -289,6 +322,12 @@ blockquote.postMessage{
     margin-bottom: 7px;
 }
 
+#replyUsername {
+    font-size:12px;
+    color:lightgrey;
+    background-color:rgb(248, 255, 251);
+}
+
 .postImage {
 	display:block;
 }
@@ -305,7 +344,7 @@ div.post{
 }
 
 div.post:hover{
-    background: rgb(255, 248, 255)
+    background-color: rgb(255, 248, 255);
     color:rgb(20, 27, 15);
 }
 
@@ -314,3 +353,25 @@ span#time{
     color:rgb(23, 25, 28);
     background-color:rgb(248, 255, 251);
 }
+
+.footerContainer{
+    text-align: center;
+    margin:auto 0;
+    max-height: 3%
+
+}
+
+.footer {
+    color:red;
+    columns:3;
+    column-gap:40px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:259px;
+    position:relative;
+    bottom:0;
+    width:60%;
+    height:20px;
+    background-color:#ffff1a;   /* Height of the footer */
+}
+
