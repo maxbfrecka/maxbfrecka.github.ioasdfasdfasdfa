@@ -24,9 +24,11 @@ angular.module('views', ['ngRoute'])
 
 .controller('threadController', ['$scope', '$routeParams', 'testData', function($scope, $routeParams, testData){
 	$scope.threads = testData.threads;
+
 	console.log("route is" + $scope.threads[$routeParams.ID])
 }])
 
-.controller('canvasController', ['$scope', 'testData', function($scope, testData){
+.controller('canvasController', ['$scope', 'testData', 'threadData', function($scope, testData, threadData){
 	$scope.threads = testData.threads;
+	$scope.threadData = threadData.threads
 }])

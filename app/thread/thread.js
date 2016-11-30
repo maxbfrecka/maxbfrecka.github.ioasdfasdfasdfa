@@ -28,7 +28,6 @@ angular.module('thread',[])
 			function search(nameKey, myArray){
 				var array = []
 		    for (var i=0; i < myArray.length; i++) {
-		    		console.log('ID is' + myArray[i].OPID)
 		        if (myArray[i].OPID === nameKey) {
 		            array.push(myArray[i]);
 		        }
@@ -49,9 +48,9 @@ angular.module('thread',[])
 				tc.currentReplies = search(tc.currentID, tc.replies);
 			})
 			
-			function imgError(image){
+			/*function imgError(image){
   			image.parentNode.parentNode.style.display = 'none';
-			}
+			}*/
 
 
       tc.newReply = function(send){
@@ -71,7 +70,7 @@ angular.module('thread',[])
             // threads[0].posts[0] is the OP and also URL
             //array of posts inside of each thread
 
-
+/*
             if (tc.sendImage==null){
             	_sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
             } else if (tc.sendImage==undefined){
@@ -79,7 +78,7 @@ angular.module('thread',[])
             } else {
             	_sendImage=tc.sendImage
             }
-
+*/
             tc.replies.$add({OPID: tc.currentID, reply: {
                 ID: make_randID(),
                 userName: 'anonymous',
@@ -101,7 +100,7 @@ angular.module('thread',[])
                 rID6t: randomRGBcolor(),
                 rID7t: randomRGBcolor(),
                 rID8t: randomRGBcolor(),
-                image: _sendImage
+                image: tc.sendImage || ''
            	}});
             send.reply = '';
             console.log(tc.currentReplies)

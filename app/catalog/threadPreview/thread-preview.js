@@ -1,6 +1,6 @@
 angular.module('threadPreview',[])
 
-.directive('mxThreadPreview', ['testData', 'threadData', 'imageBotData', function(testData, threadData, imageBotData){
+.directive('mxThreadPreview', ['threadData', 'imageBotData', function(threadData, imageBotData){
 	return {
 		restrict: 'E',
 	  templateUrl: 'catalog/threadPreview/thread-preview.html',

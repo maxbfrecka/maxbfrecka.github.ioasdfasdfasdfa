@@ -32,19 +32,20 @@ angular.module('newPost', ['firebase'])
           //array of posts inside of each thread
 
 
-          if (vm.sendImage==null){
+          /*if (vm.sendImage==null){
               _sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
             } else if (vm.sendImage==undefined){
               _sendImage='http://www.geeks123.com/wp-content/uploads/2014/09/punch-through-computer-screen-frustration.jpg'
             } else {
               _sendImage=vm.sendImage
-            }
+            }*/
 
 
           vm.threads.$add({
             OPID: _OPID,
             posts: [{
               ID: _OPID,
+              canvasID: _OPID+"cID",
               userName: 'anonymous',
               datetime: post_time(),
               content: send.thread.trim(),
@@ -64,9 +65,18 @@ angular.module('newPost', ['firebase'])
               rID6t: randomRGBcolor(),
               rID7t: randomRGBcolor(),
               rID8t: randomRGBcolor(),
-              image: _sendImage
+              image: vm.sendImage || '',
+              cParam1: getRandomNumber(0,20),
+              cParam2: getRandomNumber(0,20),
+              cParam3: getRandomNumber(0,20),
+              cParam4: getRandomNumber(0,20),
+              cParam5: getRandomNumber(0,10),
+              cRep1: getRandomNumber(5,30),
+              cRep2: getRandomNumber(5,30),
+              cParamAdd1: getRandomNumber(0,5),
+              cParamAdd2: getRandomNumber(0,5),
+              cBGC: rgb2hex(randomRGBcolor())
           }]});
-          console.log(_sendImage)
           send.thread = '';
           $location.path('/' + _OPID);
         }

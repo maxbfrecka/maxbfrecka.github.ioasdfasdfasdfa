@@ -1,0 +1,160 @@
+-click thread preview - > links to #/{{thread.ID}}
+-goes to that view... the :ID
+-and it SHOULD get the ID
+
+
+
+
+->randomized tags
+->live updates inside of threads
+->login page
+->click other post to reply to it
+->
+
+
+
+
+->SETTINGS PAGE
+-turn off randomizations
+-let users set their own schemes and settings
+-turn off live-page-updates
+
+
+
+
+-music player in top
+
+
+
+
+major features:
+-login/account/profile
+-image creator
+-music player
+-reviews page
+-page for social
+
+
+
+
+
+->database structure for threads and posts?
+-> new thread: type it in, post it...
+-> sends it to database, opens "thread" page with your post
+-> how do replies get added? where are they stored?
+-> 
+
+
+
+
+threadNumber
+
+
+
+
+
+->randomize ID tags
+
+
+
+
+
+database structure for message board
+
+
+
+WHY IS THE ROUTE MESSING UP IN THE REPLY AREA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---->add image
+click = show text box
+
+
+
+
+
+
+
+
+
+
+->when press reply, it loads in all the replies...
+
+
+
+-> reply count
+
+
+
+
+
+
+
+
+
+*=detail feature
+
+-generate variables on new post/reply for the canvas system
+*-canvas system resizes everything if the line crosses off of canvas by adjusting down until it fits
+-when post is made, grabs variables and puts them into the canvas
+
+
+
+
+CANVAS IDS ARE GETTING MIXED UP, RENAME ID FOR PROGRAM TO WORK
+
+
+
+
+
+
+
+-reply system
+-ensure threads are not posted onto page
+
+
+
+
+
+
+
+
+SOON FEATURES:
+-most recent post goes to top
+-randomized colors on NAV bar [*when on catalog / thread page]
+-color gets more intense the more replies there are in the thread (function)
+simple version: [get the post with highest amount of replies][measure other posts against it][intensify the brightness of the color until it reaches top for reply counts]
+-FIX THE IMAGE ERROR SYSTEM. WHAT THE HELL [error stuff in directive...]
+-topic/subject in newpost -> this is what gets posted to catalog preview
+-canvas randomizer for threads without image
+-reply system with tag insertion
+-hover over threadpreview and popup of the first post appears
+-reply count in thread?
+
+BACKEND TO COME:
+-account system
+-video
+-audio
+-javascript drawing
+
+
+
+
+
+
+
+
+
+

@@ -141,6 +141,10 @@ ul.catalogThreads {
     background-color: #fff94d;
 }
 
+.previewTag {
+    font-size: 17px;
+}
+
 
 .threadPreview .threadPreviewTooltip {
     width: 120px;
