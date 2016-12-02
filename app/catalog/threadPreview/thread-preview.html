@@ -21,6 +21,7 @@
 
 		<span class="previewPostTime">{{thread.posts[0].datetime}}</span>
 		<span class="previewAuthor">{{thread.posts[0].userName}}<span>
+		<span class="replyCount" ng-style="{'background-color': replyColor}">R: {{replyCount}} <span>
 		<!-- randomized color ID tag -->
 		<span class="previewTag" ng-style="{'background-color': thread.posts[0].rID1bg, 'color' : thread.posts[0].rID1t}">{{thread.posts[0].ID.charAt(0)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID2bg, 'color' : thread.posts[0].rID2t}">{{thread.posts[0].ID.charAt(1)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID3bg, 'color' : thread.posts[0].rID3t}">{{thread.posts[0].ID.charAt(2)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID4bg, 'color' : thread.posts[0].rID4t}">{{thread.posts[0].ID.charAt(3)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID5bg, 'color' : thread.posts[0].rID5t}">{{thread.posts[0].ID.charAt(4)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID6bg, 'color' : thread.posts[0].rID6t}">{{thread.posts[0].ID.charAt(5)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID7bg, 'color' : thread.posts[0].rID7t}">{{thread.posts[0].ID.charAt(6)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID8bg, 'color' : thread.posts[0].rID8t}">{{thread.posts[0].ID.charAt(7)}}</span>
 

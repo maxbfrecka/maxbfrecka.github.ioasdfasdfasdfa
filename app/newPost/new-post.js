@@ -40,6 +40,8 @@ angular.module('newPost', ['firebase'])
               _sendImage=vm.sendImage
             }*/
 
+            var _datesort = new Date().getTime()
+            var _datesortMain = new Date().getTime()
 
           vm.threads.$add({
             OPID: _OPID,
@@ -48,6 +50,8 @@ angular.module('newPost', ['firebase'])
               canvasID: _OPID+"cID",
               userName: 'anonymous',
               datetime: post_time(),
+              datesort: new Date().getTime(),
+              datesortMain: new Date().getTime(),
               content: send.thread.trim(),
               rID1bg: randomRGBcolor(),
               rID2bg: randomRGBcolor(),

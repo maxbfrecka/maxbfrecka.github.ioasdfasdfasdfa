@@ -1,25 +1,5 @@
-angular.module('thread',[])
+var tc = this;
 
-.directive('mxThread', ['testData', '$routeParams', 'newReplyClick', 'threadData', 'replyData', '$location', '$timeout', '$interval', function(testData, $routeParams, newReplyClick, threadData, replyData, $location, $timeout, $interval){
-	return {
-		restrict: 'E',
-	  templateUrl: 'thread/thread.html',
-	  scope: true,
-	  transclude: true,
-	  controllerAs: "tc",
-	  link: function(scope,element,attrs){
-
-	  	//scrolls to top on load
-	  	window.scrollTo(0, 0)
-	  		  	
-	  },
-	  controller: function($location, $scope){
-	  	var tc = this;
-
-	  	//get to top of page:
-
-
-	  	//data for thread/replies
 	  	tc.threads = threadData.threads;
 	  	tc.replies = replyData.replies;
 	
@@ -55,11 +35,17 @@ angular.module('thread',[])
 					})[0];
 				tc.thread = threadData.currentThread;
 			})
+
 			tc.replies.$loaded(function(){
 				tc.currentReplies = search(tc.currentID, tc.replies);
 			})
 			
-			//watches replies to update when a user makes a new reply
+			/*function imgError(image){
+  			image.parentNode.parentNode.style.display = 'none';
+			}*/
+
+
+			//watches replies to update
 			$scope.$watch(function(){return replyData.replies},function(){
  				console.log('replies changed')
  				function search(nameKey, myArray){
@@ -72,13 +58,10 @@ angular.module('thread',[])
 		    return array
 				}
 				tc.currentReplies = search(tc.currentID, tc.replies)
-
-				//this function might be stupid, eventually needs to be rethought
-				//I'm using an interval to make sure the replies update when a new one is made
-				//had trouble with the scope or something
-				$interval(function() {tc.currentReplies = search(tc.currentID, tc.replies)
-				}, 500)
-				
+				$timeout(function() {tc.currentReplies = search(tc.currentID, tc.replies)
+  			// anything you want can go here and will safely be run on the next digest.
+				})
+				console.log('replyobject ' + tc.currentReplies)
  			})
 
 
@@ -154,26 +137,7 @@ angular.module('thread',[])
 			//for show and hide post
 			tc.newReplyClick = newReplyClick.if
 			tc.newReplyClickImage = newReplyClick.ifImage
-	  
 	  }
+
+
   }
-
-}])
-
-.factory('replyData', ['$firebaseArray', function($firebaseArray){
-	var replyData = {}
-	var ref = firebase.database().ref('replies');
-	replyData.replies = $firebaseArray(ref);
-	return replyData
-}])
-
-
-.factory('newReplyClick',function(){
-	var newReplyClick = {}
-
-	newReplyClick.if = false
-	newReplyClick.ifImage = false
-
-
-	return newReplyClick
-})

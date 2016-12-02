@@ -14,8 +14,13 @@
 
 	<div class="centerCatalog">
 			<ul class="catalogThreads">
-				<div ng-repeat="thread in threads" ng-init="image=thread.OPID">
-					<mx-thread-preview></mx-thread-preview>
+				
+
+
+
+				<!-- <div class="threadDisplay" ng-repeat="thread in threads | orderBy: 'datesortMain' : true" ng-init="image=thread.OPID"> -->
+				<div class="threadDisplay" ng-repeat="thread in threads | orderBy:SortFunctionTest : true" ng-init="image=thread.OPID">
+					<mx-thread-preview thread={{thread}}></mx-thread-preview>
 				</div>
 
 

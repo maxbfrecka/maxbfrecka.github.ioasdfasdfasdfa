@@ -2,33 +2,36 @@ body {
 	background-color:yellow;
 }
 
+
+/*to make navbar skinnier*/
+/*.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {min-height:40px !important}*/
+
 li.active {
     color:purple;
 }
 
 li#navbar_links {
-    border-radius: 25px;
-    color:red;
+    border-radius: 20px;
+    color:blue;
     font-size:18px;
 }
-
 .viewContent {
-
 }
 
 /*remove position fixed if return to prior state*/
 .navbarMargin {
-	margin-top:10px;
-/*	position: fixed;
-	z-index:1;*/
+    margin-top:10px;
+/*  position: fixed;
+    z-index:1;*/
 }
 
 .navbar-brand {
-	font-size:20px;
+    font-size:20px;
 }
 
 .navbar-controller {
-	min-width: 1000px;
+    min-width: 1000px;
 }
 
 .navbar-default {
@@ -36,6 +39,7 @@ li#navbar_links {
   margin: 0 0 3px 0;
   background-color: red;
   border-radius: 25px;
+  max-height:0em;
 }
 
 
@@ -46,6 +50,7 @@ li#navbar_links {
 
 .headColumns {
 	margin-top:10px;
+    margin-bottom:20px;
 	text-align:center;
 }
 
@@ -60,15 +65,15 @@ li#navbar_links {
 }
 
 .makeNewPost {
-    background-color:#fbfad0;
+    background-color:#11fb19;
     color:grey;
 	padding-top:10px;
     padding-bottom:40px;
 	font-size: 19px;
 	height:59px;
 	width:260px;
-    border-color:white;
-    border-width:2px;
+    border-color:#1a75ff;
+    border-width:0px;
     border-style:solid;
 	margin-bottom:5px;
 	border-radius:10px;
@@ -77,7 +82,7 @@ li#navbar_links {
 .makeNewPost:hover{
 	cursor: pointer;
     color:grey;
-    background-color:#ffff99;
+    background-color:#1a75ff;
 }
 
 .newPostContainer{
@@ -92,7 +97,7 @@ li#navbar_links {
 	text-align:center;
 	width:97%;
 	min-width:1200px;
-    max-width:1250px;
+    max-width:1400px;
 	position:relative;
 	padding:10px;
 	box-sizing: border-box;
@@ -102,15 +107,27 @@ li#navbar_links {
 }
 
 ul.catalogThreads {
+    display:block;
 	margin-right:40px;
-	height:1500px;
+    
+
+
+	/*
     -moz-column-count: 4;
-	columns:4;
-/*	column-width:270px;
-*/	column-gap:0px
+    columns:4;
+    column-gap:0px
 	column-fill:balance;
 	column-rule:3px;
-	column-rule: 1px dotted black;
+	column-rule: 1px dotted black;*/
+
+
+}
+
+.threadDisplay {
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
 }
 
 /*#previewLink {
@@ -127,7 +144,7 @@ ul.catalogThreads {
 	height:250px;
 	min-width:250px;
 	min-height:250px;
-	margin-top:30px;
+	margin:19px;
 	border-style:solid;
 	border-width:2px;
 /*	border-color:grey;
@@ -161,6 +178,11 @@ ul.catalogThreads {
     left: 105%; 
 }
 
+.replyCount {
+    color:black;
+    font-size: 12px;re
+}
+
 
 .threadPreviewContent {
 	padding:15px;
@@ -175,6 +197,10 @@ ul.catalogThreads {
 	font-size:15px;
   color:rgb(23, 25, 28);
   background-color:rgb(248, 255, 251);
+}
+
+.previewAuthor {
+    color:grey;
 }
 
 .summaryContainer {

@@ -1,40 +1,21 @@
-angular.module('thread',[])
+link: function(scope,element,attrs){
+  		
+  		//trying this... no idea WTF IS GOING ON
 
-.directive('mxThread', ['testData', '$routeParams', 'newReplyClick', 'threadData', 'replyData', '$location', '$timeout', '$interval', function(testData, $routeParams, newReplyClick, threadData, replyData, $location, $timeout, $interval){
-	return {
-		restrict: 'E',
-	  templateUrl: 'thread/thread.html',
-	  scope: true,
-	  transclude: true,
-	  controllerAs: "tc",
-	  link: function(scope,element,attrs){
-
-	  	//scrolls to top on load
-	  	window.scrollTo(0, 0)
-	  		  	
-	  },
-	  controller: function($location, $scope){
-	  	var tc = this;
-
-	  	//get to top of page:
-
-
-	  	//data for thread/replies
-	  	tc.threads = threadData.threads;
-	  	tc.replies = replyData.replies;
+	  	scope.threads = threadData.threads;
+	  	scope.replies = replyData.replies;
 	
 	  	//gets thread info from URL and finds thread based on OPID
 	  	console.log('routeparams ID is ' + $routeParams.ID)
 	  	threadData.currentID = $routeParams.ID;
-	  	tc.currentID = threadData.currentID
-	  	threadData.currentThread = tc.threads.filter(function(obj) {
-    		return obj.OPID === tc.currentID;
+	  	scope.currentID = threadData.currentID
+	  	threadData.currentThread = scope.threads.filter(function(obj) {
+    		return obj.OPID === scope.currentID;
 
 			})[0];
-			tc.thread = threadData.currentThread;
-			console.log(tc.thread)
+			scope.thread = threadData.currentThread;
+			console.log(scope.thread)
 
-			tc.threads
 
 			//locates replies for this thread...
 			function search(nameKey, myArray){
@@ -46,22 +27,28 @@ angular.module('thread',[])
 		    }
 		    return array
 			}
-			tc.currentReplies = search(tc.currentID, tc.replies);
-			console.log(tc.currentReplies)
+			scope.currentReplies = search(scope.currentID, scope.replies);
+			console.log(scope.currentReplies)
 
-			tc.threads.$loaded(function(){
-				threadData.currentThread = tc.threads.filter(function(obj) {
-	    		return obj.OPID === tc.currentID;
+			scope.threads.$loaded(function(){
+				threadData.currentThread = scope.threads.filter(function(obj) {
+	    		return obj.OPID === scope.currentID;
 					})[0];
-				tc.thread = threadData.currentThread;
+				scope.thread = threadData.currentThread;
 			})
-			tc.replies.$loaded(function(){
-				tc.currentReplies = search(tc.currentID, tc.replies);
+
+			scope.replies.$loaded(function(){
+				scope.currentReplies = search(scope.currentID, scope.replies);
 			})
 			
-			//watches replies to update when a user makes a new reply
-			$scope.$watch(function(){return replyData.replies},function(){
- 				console.log('replies changed')
+			/*function imgError(image){
+  			image.parentNode.parentNode.style.display = 'none';
+			}*/
+
+
+			//watches replies to update when new replies added
+			scope.$watch(function(){return replyData.replies},function(){
+ 				console.log('replies changed in LINK')
  				function search(nameKey, myArray){
 				var array = []
 		    for (var i=0; i < myArray.length; i++) {
@@ -71,19 +58,16 @@ angular.module('thread',[])
 		    }
 		    return array
 				}
-				tc.currentReplies = search(tc.currentID, tc.replies)
-
-				//this function might be stupid, eventually needs to be rethought
-				//I'm using an interval to make sure the replies update when a new one is made
-				//had trouble with the scope or something
-				$interval(function() {tc.currentReplies = search(tc.currentID, tc.replies)
-				}, 500)
-				
+				scope.currentReplies = search(scope.currentID, scope.replies)
+				$timeout(function() {scope.currentReplies = search(scope.currentID, scope.replies)
+  			// anything you want can go here and will safely be run on the next digest.
+				})
+				console.log('replyobject ' + scope.currentReplies)
  			})
 
 
 			//the function for adding a reply
-      tc.newReply = function(send){
+      scope.newReply = function(send){
 
           // do some validation
           if ( !send.reply ) {
@@ -102,9 +86,9 @@ angular.module('thread',[])
 						//assists in moving page to correct ID at bottom
 						newReplyID = make_randID()
 
-            tc.replies.$add(
+            scope.replies.$add(
             {
-            		OPID: tc.currentID,
+            		OPID: scope.currentID,
                 ID: newReplyID,
                 userName: 'anonymous',
                 datetime: post_time(),
@@ -131,12 +115,12 @@ angular.module('thread',[])
 
             send.reply = '';
             
-            tc.replies.$loaded(function(){
-							tc.currentReplies = search(tc.currentID, tc.replies);
-							console.log(tc.currentReplies)
+            scope.replies.$loaded(function(){
+							scope.currentReplies = search(scope.currentID, scope.replies);
+							console.log(scope.currentReplies)
 
 							//scroll to the bottom
-							tc.goToReply = function(id) {
+							scope.goToReply = function(id) {
 						      // set the location.hash to the id of
 						      // the element you wish to scroll to.
 						      console.log("woring")
@@ -145,35 +129,16 @@ angular.module('thread',[])
 							    $anchorScroll();
 							    $location.hash(old);
 						  }
-						  tc.goToReply(newReplyID)
+						  scope.goToReply(newReplyID)
 
 						})
           }
       };
 
 			//for show and hide post
-			tc.newReplyClick = newReplyClick.if
-			tc.newReplyClickImage = newReplyClick.ifImage
+			scope.newReplyClick = newReplyClick.if
+			scope.newReplyClickImage = newReplyClick.ifImage
+ 			
 	  
-	  }
-  }
 
-}])
-
-.factory('replyData', ['$firebaseArray', function($firebaseArray){
-	var replyData = {}
-	var ref = firebase.database().ref('replies');
-	replyData.replies = $firebaseArray(ref);
-	return replyData
-}])
-
-
-.factory('newReplyClick',function(){
-	var newReplyClick = {}
-
-	newReplyClick.if = false
-	newReplyClick.ifImage = false
-
-
-	return newReplyClick
-})
+	  },

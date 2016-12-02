@@ -1,25 +1,62 @@
 angular.module('catalog',[])
 
-.directive('mxCatalog', ['newPostClick', 'threadData', 'canvasDataTest', function(newPostClick, threadData, canvasDataTest){
+.directive('mxCatalog', ['newPostClick', 'threadData', 'canvasDataTest', 'replyData', function(newPostClick, threadData, canvasDataTest, replyData){
 	return {
 		restrict: 'E',
 	  templateUrl: 'catalog/catalog.html',
 	  scope: true,
 	  transclude: true,
 	  link: function(scope, element, attrs){
-	  	scope.threads = threadData.threads;
+	  	scope.threads = threadData.threads
+	  	scope.replies = replyData.replies
+
+
 	  	scope.newPostClick = newPostClick.if
 	  	scope.newPostClickImage = newPostClick.ifImage
 
 	  	scope.postTime = post_time()
 	  	
 
-	  	
 
 
+
+
+
+
+	  	//the sortBy filter for making sure newest post on top
+	  	scope.SortFunctionTest = function(thread){
+	  		//reply array
+	  		var replies = scope.replies
+
+	  		//to find replies and their times into currentreplies array
+	  		function searchForReplies(_thread, _replyArray){
+					var array = []
+			    for (var i=0; i < _replyArray.length; i++) {
+		        if (_replyArray[i].OPID === _thread.OPID) {
+		            array.push(_replyArray[i]);
+		        }
+			    }
+			    return array
+			  }
+			  var currentreplies = searchForReplies(thread, replies)
+			  //checks if replies exist, if they do then it finds the newest one, then checks against thread time
+			  //returns fastest of the two
+			  if (currentreplies.length > 0){
+					var res = Math.max.apply(Math,currentreplies.map(function(o){return o.datesort;}))
+					if (res > thread.posts[0].datesortMain){
+						return res
+					}
+				}
+				return thread.posts[0].datesortMain
+				
+	  	}
 	  }
   }
 }])
+
+
+
+
 
 .factory('newPostClick',function(){
 	var newPostClick = {}
@@ -40,9 +77,27 @@ angular.module('catalog',[])
 	threadData.currentID = null
 	threadData.currentThread = null
 
+	threadData
+
 	return threadData
 
 }])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
